@@ -1,0 +1,28 @@
+<html> 
+<head> 
+<title>为body添加click事件</title> 
+<meta http-equiv="content-type" content="text/html;charset=utf-8"> 
+<script type="text/javascript" src="js/jquery-1.8.3.min.js"></script> 
+<script> 
+function show_body_click(){ 
+alert('you are click the body'); 
+} 
+jQuery(document).ready(function(){ 
+//jQuery("ifr_id").contents().find("body").attr("onclick", "show_body_click()"); 
+//alert(jQuery("#ifr_id").contents().find('body').attr("onclick",'xxxx()'));//不能实现 
+//var ifr = jQuery("ifr_id") 
+}); 
+jQuery(document, '#ifr_id').ready(function(){ 
+jQuery("#ifr_id").contents().find("body").attr("onclick", "parent.show_body_click()"); 
+//jQuery("#ifr_id").contents().find("body").live("click", "parent.show_body_click()");//ff没有效果 
+//jQuery("#ifr_id").contents().find("body").click(parent.show_body_click()); //ff没有效果 
+}); 
+
+</script> 
+</head> 
+<body id="body_id"> 
+<span> 
+<iframe id="ifr_id" src="eval.html" height="100px" width="800px"></iframe> 
+</span> 
+</body> 
+</html> 

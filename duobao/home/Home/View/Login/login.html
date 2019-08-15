@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<head>
+ 
+<title>登录</title>
+<script src="__PUBLIC__/Home/js/jquery-1.8.3.min.js"></script>
+<script src="__PUBLIC__/Home/js/index.js"></script>
+<link rel="stylesheet" href="__PUBLIC__/Home/style/login.css">
+</head>
+<div class="msg"></div>
+<div class="fugai"></div>
+
+<body>
+
+
+<div class="login">
+<form action="{:U('login/dologin')}" method="post">
+	<div class="display1" style="display:none">
+		<li style="height:120px; margin-bottom:80px;"><img src="__PUBLIC__/Home/img/logo1.png" width="250" style=" margin:auto"></li>
+		<li><input type="text" class="login_usename" name="yy_username" onFocus="if(this.value=='用户名（手机号）'){this.value=''}" onBlur="if(this.value==''){this.value='用户名（手机号）'}" value="用户名（手机号）"></li>
+		<li><input type="text" class="login_pass" name="yy_usepwd"  onFocus="if(this.value=='请输入密码'){$(this).attr('type','password');this.value=''}" onBlur="if(this.value==''){$(this).attr('type','text');this.value='请输入密码'}" value="请输入密码"></li>
+		<li><input autocomplete="off" type="text" class="login_yzm" name="yzm"  onFocus="if(this.value=='验证码'){this.value=''}" onBlur="if(this.value==''){this.value='验证码'}"  style="width:110px; float:left;" value="验证码" /><a style="display:block; float:right; width:100px; line-height:40px; font-family:Arial, Helvetica, sans-serif; text-indent:0; text-align:center; font-size:24px; height:40px; margin-left:10px; margin-top:10px; background-color:#dd9e30; color:#b57911;-moz-border-radius: 5px; -webkit-border-radius:5px; border-radius:5px;"><img id="yy"src="__URL__/verify" alt="" onclick='this.src="__URL__/verify?rand="+Math.random()'><br></a>
+		</li>
+		<li><input type="hidden" name="act" value="ok"><input type="submit" class="login_bot" value=" 登 录 "></li>
+	</div>
+	<div class="display2">
+		<li><input  type="button" onClick="display()" class="login_bot" style="background:none; border:1px solid #fff; font-size:18px" value=" 账号登录 "></li>
+		<li><input  type="button" onClick="document.location.href='https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxb9c2674aacc70b71&redirect_uri=http://lele.pkerlive.com/index.php/Login/wx&response_type=code&scope=snsapi_userinfo&state=1#wechat_redirect'" class="login_bot" style="background:none; border:1px solid #fff; font-size:18px" value=" 微信登录 "></li>
+		<li><input  type="button" onClick="document.location.href='{:U('Login/register')}'" class="login_bot" style="background:none; border:1px solid #fff; font-size:18px" value=" 注册 "></li>
+	</div>
+ 
+ <li><input  type="button" onClick="document.location.href='/'" class="login_bot" style="background:none; border:1px solid #fff; font-size:18px" value=" 返回 "></li>
+   
+   </form>
+</div>
+
+</div>
+<script>
+ function display(){
+	$(".display1").css("display","block");
+	$(".display2").css("display","none");
+ }
+</script>
+</body>
+</html>

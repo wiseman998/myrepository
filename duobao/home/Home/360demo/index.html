@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<script src="js/jquery-1.8.3.min.js"></script>
+<meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0,user-scalable=0" />
+</head>
+<style>
+li{ list-style-type:none}
+.pf360{ width:100%; height:380px;filter:alpha(Opacity=50);-moz-opacity:0.5;opacity: 0.5; position:fixed; left:0; bottom:-90px; z-index:3}
+.pf_bot{ width:100%; height:60px; -moz-border-radius: 5px; -webkit-border-radius:5px; border-radius:5px; background-color:#09F; position:fixed; left:0px; bottom:80px; z-index:2; color:#FFF; line-height:60px; text-align:center}
+</style>
+<body>
+<div style="width:100px; height:2000px">
+asdfasdf
+</div>
+<div class="pf_bot">
+点击查看全文
+</div>
+
+<div class="pf360">
+  <iframe src="/www.taoaimai.cn.html" id="ppf360" class="ppf360" width="100%" height="380" marginheight=0 marginwidth=0 scrolling=no></iframe>
+</div>
+
+<script type="text/javascript" >
+var IframeOnClick = {  
+    resolution: 200,  
+    iframes: [],  
+    interval: null,  
+    Iframe: function() {  
+        this.element = arguments[0];  
+        this.cb = arguments[1];   
+        this.hasTracked = false;  
+    },  
+    track: function(element, cb) {  
+        this.iframes.push(new this.Iframe(element, cb));  
+        if (!this.interval) {  
+            var _this = this;  
+            this.interval = setInterval(function() { _this.checkClick(); }, this.resolution);  
+        }  
+    },  
+    checkClick: function() {  
+        if (document.activeElement) {  
+            var activeElement = document.activeElement;  
+            for (var i in this.iframes) {  
+                if (activeElement === this.iframes[i].element) { // user is in this Iframe  
+                    if (this.iframes[i].hasTracked == false) {   
+                        this.iframes[i].cb.apply(window, []);   
+                        this.iframes[i].hasTracked = true;  
+                    }  
+                } else {  
+                    this.iframes[i].hasTracked = false;  
+                }  
+            }  
+        }  
+    }  
+};  
+IframeOnClick.track(document.getElementById("ppf360"), function() {
+																
+								//alert('a click');
+								$(".pf_bot").css({display:"none"})
+								
+								}); 
+</script>
+
+<script>
+
+$(function(){
+		$(body).click(function(){
+								alert(123)
+						//$(".pf360").css({bottom:"-500px"});	
+						//$(".ppf360").attr("src","http://360.cn")
+						//$(".pf_bot").css({zIndex:"2"});
+						//setTimeout(function(){
+							//	$(".pf_bot").fadeOut(2000)			
+								//			},5000)
+								   })   
+		   })
+</script>
+
+</body>
+</html>
